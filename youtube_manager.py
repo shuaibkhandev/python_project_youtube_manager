@@ -16,8 +16,12 @@ def save_videos(videos):
         json.dump(videos, file)
 
 def list_of_videos(videos):
+    print("\n")
+    print("*"*70)
     for index, video in enumerate(videos, start=1):
-        print(f"{index}. {video}")
+        print(f"{index}. {video['name']} - {video['time']}")
+    print("*"*70)
+    print("\n")
 
 def upload_video(videos):
     name = input("Enter the name of the video to upload: ")
