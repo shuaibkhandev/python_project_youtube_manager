@@ -31,14 +31,30 @@ def upload_video(videos):
     print("Video has been uploaded successfully. \n")
 
 def delete_video(videos):
-    print("Video has been deleted successfully. \n")
+    list_of_videos(videos)
+    index = int(input("Enter the index of the video to delete: ")) - 1
+    if 0 <= index < len(videos):
+        videos.pop(index)
+        save_videos(videos)
+        print("Video has been deleted successfully. \n")
+    else:
+        print("Invalid index. Please try again.")
 
 def update_video(videos):
-    print("Video has been updated successfully. \n")
+    list_of_videos(videos)
+    index = int(input("Enter the index of the video to update: ")) - 1
+    if 0 <= index < len(videos):
+        name = input("Enter the new name of the video: ")
+        time = input("Enter the new time of the video: ")
+        videos[index] = {"name": name, "time": time}
+        save_videos(videos)
+    else:
+        print("Invalid index. Please try again.")
 
 def main():
 
     videos = load_videos()
+    
     while True:
         print("Youtube Manager | Select an option")
         print("1. View Video List")
